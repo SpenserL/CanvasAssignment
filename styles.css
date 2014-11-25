@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #777;
-    font-family: arial;
+    font-family: times;
 }
 /* Seems to stretch canvas to incorrect size
 canvas {
