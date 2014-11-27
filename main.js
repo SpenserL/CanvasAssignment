@@ -36,18 +36,45 @@ function drawHouse(ctx) {
    ctx.fill();
 
    // Chimney Right side
+   ctx.lineWidth = 2;
    ctx.fillStyle = "firebrick";
    ctx.beginPath();
    ctx.moveTo(216.5, 47);
    ctx.lineTo(223, 47.75);
    ctx.lineTo(223, 33);
-   ctx.lineTo(217, 35);
-   ctx.lineTo(217, 47);
+   ctx.lineTo(216.5, 35);
+   ctx.lineTo(216.5, 47);
    ctx.closePath();
    ctx.stroke();
    ctx.fill();
 
+   // Chimney Front side
+   ctx.fillStyle = "firebrick";
+   ctx.beginPath();
+   ctx.moveTo(216.5, 35);
+   ctx.lineTo(207, 34);
+   ctx.lineTo(207, 47);
+   ctx.stroke();
+   ctx.lineTo(216.5, 47);
+   ctx.lineTo(216.5, 35);
+   ctx.closePath();
+   ctx.fill();
+
+   // Chimney Top
+   ctx.lineWidth = 1;
+   ctx.fillStyle = "slategray";
+   ctx.beginPath();
+   ctx.moveTo(206, 34);
+   ctx.lineWidth = 2;
+   ctx.lineTo(213, 32);
+   ctx.lineTo(223, 33);
+   ctx.stroke();
+   ctx.lineTo(206, 34);
+   ctx.closePath();
+   ctx.fill();
+
    // Roof part 1
+   ctx.lineWidth = 1;
    ctx.fillStyle = "white";
    ctx.beginPath();
    ctx.moveTo(235, 50);
@@ -84,7 +111,7 @@ function drawHouse(ctx) {
    ctx.stroke();
 
    // Main frame front
-   ctx.fillStyle = "gray";
+   ctx.fillStyle = "gainsboro";
    ctx.beginPath();
    ctx.moveTo(60, 100.33);
    ctx.lineTo(60, 170);
