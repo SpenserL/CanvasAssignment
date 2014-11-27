@@ -35,14 +35,17 @@ function drawHouse(ctx) {
    ctx.closePath();
    ctx.fill();
 
-   // Chimney
+   // Chimney Right side
    ctx.fillStyle = "firebrick";
    ctx.beginPath();
-   ctx.moveTo(205, 46);
+   ctx.moveTo(216.5, 47);
    ctx.lineTo(223, 47.75);
    ctx.lineTo(223, 33);
    ctx.lineTo(217, 35);
+   ctx.lineTo(217, 47);
+   ctx.closePath();
    ctx.stroke();
+   ctx.fill();
 
    // Roof part 1
    ctx.fillStyle = "white";
