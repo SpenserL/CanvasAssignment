@@ -12,6 +12,7 @@ canvas {
 
 canvas {
     border: solid 1px;
+    background-color: lightblue;
 }
 
 .container {
