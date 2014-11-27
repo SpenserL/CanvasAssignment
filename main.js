@@ -10,13 +10,47 @@ function createCanvas() {
 
 function drawHouse(ctx) {
 
+   // Ground
+   ctx.fillStyle = "darkolivegreen";
+   ctx.beginPath();
+   ctx.moveTo(0, 125);
+   ctx.lineTo(0, 300);
+   ctx.lineTo(300, 300);
+   ctx.lineTo(300, 125);
+   ctx.lineTo(0, 125);
+   ctx.closePath();
+   ctx.fill();
+
+   // Side of house
+   ctx.fillStyle = "cyan";
+   ctx.beginPath();
+   ctx.moveTo(195, 118.5);
+   ctx.lineTo(195, 190);
+   ctx.lineTo(263, 160);
+   ctx.lineTo(263, 90);
+   ctx.stroke();
+   ctx.lineTo(235, 55);
+   ctx.lineTo(195, 118.5)
+   ctx.lineTo(195, 190);
+   ctx.closePath();
+   ctx.fill();
+
+   // Chimney
+   ctx.fillStyle = "firebrick";
+   ctx.beginPath();
+   ctx.moveTo(205, 46);
+   ctx.lineTo(223, 47.75);
+   ctx.lineTo(223, 33);
+   ctx.lineTo(217, 35);
+   ctx.stroke();
+
    // Roof part 1
    ctx.fillStyle = "white";
    ctx.beginPath();
    ctx.moveTo(235, 50);
    ctx.lineTo(200, 115);
    ctx.lineTo(50, 95);
-   ctx.lineTo(85, 30);
+   ctx.lineTo(85, 35);
    ctx.lineTo(235, 50);
    ctx.closePath();
    ctx.fill();
@@ -35,7 +69,7 @@ function drawHouse(ctx) {
    ctx.stroke();
 
    // Roof Trim part 2
-   ctx.fillStyle = "purple";
+   ctx.fillStyle = "chartreuse";
    ctx.beginPath();
    ctx.moveTo(235, 50);
    ctx.lineTo(200, 115);
