@@ -1,9 +1,16 @@
 body {
-    margin: 0;
-    padding: 0;
-    background-color: #6AA9C8;
-    font-family: times;
+   margin: 0;
+   padding: 0;
+   background-color: #D6E7EF;
+   font-family: times;
 }
+
+h1, h2, h3, h4, h5, p {
+    font-family: 'Voces', cursive;
+    margin: 5px;
+    padding: 5px;
+}
+
 /* Seems to stretch canvas to incorrect size
 canvas {
     width: 300px;
@@ -16,7 +23,7 @@ canvas {
 }
 
 .container {
-    padding-top: 100px;
+    padding-top: 50px;
     text-align: center;
     margin: auto;
     /*background-color: #999;*/
