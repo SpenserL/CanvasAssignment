@@ -1,14 +1,9 @@
 body {
-   margin: 0;
-   padding: 0;
-   background-color: #D6E7EF;
-   font-family: times;
+  /*font-family: 'Voces', cursive;*/
 }
 
-h1, h2, h3, h4, h5, p {
-    font-family: 'Voces', cursive;
-    margin: 5px;
-    padding: 5px;
+.jumbotron {
+  border-radius: 0 !important;
 }
 
 /* Seems to stretch canvas to incorrect size
@@ -22,9 +17,8 @@ canvas {
     background-color: lightblue;
 }
 
-.container {
-    padding-top: 50px;
-    text-align: center;
-    margin: auto;
-    /*background-color: #999;*/
+@media screen and (max-width: 991px){
+    #canvas {
+        text-align: center;
+    }
 }
