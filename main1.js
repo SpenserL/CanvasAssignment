@@ -1,66 +1,80 @@
-var canvas;
-var ctx;
+var canvas;   // Global canvas variable
+var ctx;      // Global canvas context variable
 
+// Main function
 function createCanvas() {
-   ctx = document.getElementById('house').getContext('2d');
-   var cW = ctx.canvas.width,
-        cH = ctx.canvas.height;
-   var smokes = [];
+  // Finds the canvas to get a context that can be drawn
+  ctx = document.getElementById('house').getContext('2d');
+  // Assigns the canvas height and width to variables
+  var cW = ctx.canvas.width,
+      cH = ctx.canvas.height;
+  // Creates an array for smoke particle shapes
+  var smokes = [];
 
-   function addSmoke() {
-      var x = 195 - Math.floor(Math.random() * 10) + 1;
-      var y = 53;
-      var s = Math.floor(Math.random() * 3) + 1;
-      var v = Math.floor(Math.random() * 5);
-      smokes.push({
-         "x": x,
-         "y": y,
-         "s": s,
-         "v": v,
-      });
-   }
+  function addSmoke() {
+    // X position variable to randomized the start position of the above the chimney
+    var x = 195 - Math.floor(Math.random() * 10) + 1;
+    // Y position variable, fixed to the height of the smoke particles
+    var y = 53;
+    // Size variable for the smoke particles
+    var s = Math.floor(Math.random() * 3) + 1;
+    // Velocity variable for the smoke particles
+    var v = Math.floor(Math.random() * 5);
+    // Appends the generated variables to the smokes array, each unique to a particle.
+    smokes.push({
+      "x": x,
+      "y": y,
+      "s": s,
+      "v": v,
+    });
+  }
+  function createSmoke() {
+    // Adds two indexes for particles to the smokes array
+    addSmoke();
+    addSmoke();
+    // For every index, draw a circle based on the generated values from addSmoke()
+    for (var i = 0; i < smokes.length; i++) {
+      ctx.fillStyle = "rgba(0,0,0,.1)";  // Sets the smoke particle colour to transparent black
+      ctx.beginPath();
+      ctx.arc(smokes[i].x, smokes[i].y -= smokes[i].s * .5, smokes[i].v, 0, Math.PI * 2, false);
+      ctx.fill();   // Y posistion is decremented for every drawn frame to give appearance of upward motion
 
-   function createSmoke() {
-      addSmoke();
-      addSmoke();
-      for (var i = 0; i < smokes.length; i++) {
-         ctx.fillStyle = "rgba(0,0,0,.1)";
-         ctx.beginPath();
-         ctx.arc(smokes[i].x, smokes[i].y -= smokes[i].s * .5, smokes[i].v, 0, Math.PI * 2, false);
-         ctx.fill();
-         if (smokes[i].y < -5) {
-            smokes.splice(i, 1);
-         }
+      // If the smoke moves above the canvas, remove the index and therefore the particle.
+      if (smokes[i].y < -5) {
+        smokes.splice(i, 1);
       }
-   }
+    }
+  }
+  // Animation function
+  function animate() {
+    ctx.save();  // Save the previous canvas context
+    ctx.clearRect(0, 0, cW, cH);  // Clear the context for a new frame
+    // Draw the house, then create smoke
+    drawHouse();
+    createSmoke();
+    ctx.restore(); // Restore the canvas context that was saved
+  }
 
-   function animate() {
-      ctx.save();
-      ctx.clearRect(0, 0, cW, cH);
+  // Sets the animation interval for the animate function to be called every 30ms
+  var animateInterval = setInterval(animate, 30);
+  // Mouse click listener to pause and reset the canvas animation
+  var clicks = 0;
+  ctx.canvas.addEventListener('click', function(event) {
+    clicks++;
 
-      drawHouse();
-      createSmoke();
-      ctx.restore();
-   }
-
-   var animateInterval = setInterval(animate, 30);
-
-   var clicks = 0;
-   ctx.canvas.addEventListener('click', function(event) {
-      clicks++;
-
-      if (clicks % 2 == 0) {
-         createCanvas();
-      } else {
-         clearInterval(animateInterval);
-      }
-
-   });
+    if (clicks % 2 == 0) {
+      createCanvas();
+    } else {
+      clearInterval(animateInterval);
+    }
+  });
 }
+// Load the main function once the page has fully loaded
 window.addEventListener('load', function(event) {
     createCanvas();
 });
 
+// Draws the house
 function drawHouse() {
     // transform(xScale, ySkew, xSkew, yScale, xTrans, yTrans)
     // ctx.setTransform(1, 0, 0, 1, 0, 0);
