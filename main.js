@@ -1,11 +1,27 @@
+var canvas;
+var ctx;
+
+
 function createCanvas() {
-    var canvas = document.getElementById("house");
+    canvas = document.getElementById("house");
     if (canvas.getContext) {
-        var ctx = canvas.getContext("2d");
+        ctx = canvas.getContext("2d");
         drawHouse(ctx);
+        startSmoke(ctx);
     } else {
         alert("Canvas not supported.");
     }
+}
+
+function startSmoke(ctx) {
+   window.setInterval("smoke(ctx)", 1500);
+}
+
+function smoke(ctx) {
+   console.log("Smoked");
+   ctx.fillRect(50, 50, 100, 100);
+   // console.log("Smoke");
+
 }
 
 function drawHouse(ctx) {
@@ -62,7 +78,7 @@ function drawHouse(ctx) {
 
    // Chimney Top
    ctx.lineWidth = 1;
-   ctx.fillStyle = "slategray";
+   ctx.fillStyle = "black";
    ctx.beginPath();
    ctx.moveTo(206, 34);
    ctx.lineWidth = 2;
